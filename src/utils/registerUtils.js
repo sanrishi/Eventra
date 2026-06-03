@@ -9,7 +9,7 @@ const readRegistrations = () => {
     const data = localStorage.getItem(STORAGE_KEY);
     return safeJsonParse(data, {});
   } catch (error) {
-    // eslint-disable-next-line no-console
+     
     console.warn("[RegisterUtils] Failed to read registrations:", error);
     return {};
   }

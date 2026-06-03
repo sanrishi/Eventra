@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import { fetchRecommendedConnections, suggestMeetingSlots } from "../../utils/aiMatchmaking";
 import { Calendar, MessageSquare, Zap, Star } from "lucide-react";
 import { toast } from "react-toastify";

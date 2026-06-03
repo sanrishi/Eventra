@@ -43,12 +43,12 @@ class FeatureErrorBoundary extends React.Component {
       const existing = safeParseJson(localStorage.getItem("eventra_feature_errors"), []);
       existing.unshift(entry);
       localStorage.setItem("eventra_feature_errors", JSON.stringify(existing.slice(0, 10)));
-    } catch (_) {}
+    } catch {}
 
     if (typeof onError === "function") {
       try {
         onError(error, errorInfo);
-      } catch (_) {}
+      } catch {}
     }
   }
 

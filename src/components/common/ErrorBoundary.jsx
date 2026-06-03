@@ -53,7 +53,7 @@ function attemptStateRecovery() {
       sessionStorage.removeItem("eventra_component_state_backup");
       return true;
     }
-  } catch (_) {
+  } catch {
     // State recovery failed silently
   }
   return false;
@@ -89,7 +89,7 @@ function saveAppStateSnapshot() {
       })(),
     };
     sessionStorage.setItem("eventra_state_snapshot", JSON.stringify(snapshot));
-  } catch (_) {}
+  } catch {}
 }
 
 /** Persist error info to localStorage for post-reload diagnosis */
@@ -107,7 +107,7 @@ function persistErrorLog(errorId, error, errorInfo) {
       appState: (() => {
         try {
           return window.__EVENTRA_APP_STATE__ || {};
-        } catch (_) {
+        } catch {
           return {};
         }
       })(),
@@ -116,7 +116,7 @@ function persistErrorLog(errorId, error, errorInfo) {
     existing.unshift(log);
     // Keep only the 5 most recent errors
     localStorage.setItem("eventra_error_log", JSON.stringify(existing.slice(0, 5)));
-  } catch (_) {
+  } catch {
     // Never crash inside the error boundary
   }
 }
@@ -133,7 +133,7 @@ function buildDiagnosticReport(errorId, error, errorInfo) {
         }
       }
       return JSON.stringify(snap, null, 2);
-    } catch (_) {
+    } catch {
       return "Unable to read localStorage";
     }
   })();
@@ -148,7 +148,7 @@ function buildDiagnosticReport(errorId, error, errorInfo) {
         }
       }
       return JSON.stringify(snap, null, 2);
-    } catch (_) {
+    } catch {
       return "Unable to read sessionStorage";
     }
   })();
@@ -221,7 +221,7 @@ class ErrorBoundary extends React.Component {
 
     try {
       logError(error, errorInfo);
-    } catch (_) { }
+    } catch { }
 
     console.error("Captured by ErrorBoundary:", error, errorInfo);
   }
@@ -266,7 +266,7 @@ class ErrorBoundary extends React.Component {
       });
       localStorage.clear();
       Object.entries(preserved).forEach(([k, v]) => localStorage.setItem(k, v));
-    } catch (_) {
+    } catch {
       localStorage.clear();
     }
     setTimeout(() => window.location.reload(), 300);
@@ -288,7 +288,7 @@ class ErrorBoundary extends React.Component {
           const blob = new Blob([report], { type: "text/plain" });
           const url = URL.createObjectURL(blob);
           window.open(url, "_blank", "noopener,noreferrer");
-        } catch (_) {}
+        } catch {}
       });
   };
 
@@ -323,7 +323,7 @@ class ErrorBoundary extends React.Component {
           }
         }
         return JSON.stringify(snap, null, 2);
-      } catch (_) {
+      } catch {
         return "{}";
       }
     })();

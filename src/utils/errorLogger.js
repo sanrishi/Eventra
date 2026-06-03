@@ -48,7 +48,7 @@ function persistToLocalStorage(entry) {
   existing.unshift(entry);
   try {
     localStorage.setItem("eventra_error_log", JSON.stringify(existing.slice(0, 10)));
-  } catch (_) {
+  } catch {
   }
 }
 
@@ -88,7 +88,7 @@ export const clearErrorLog = () => {
   try {
     localStorage.removeItem("eventra_error_log");
     localStorage.removeItem("eventra_feature_errors");
-  } catch (_) {}
+  } catch {}
 };
 
 export const getSectionErrors = () =>
@@ -97,5 +97,5 @@ export const getSectionErrors = () =>
 export const clearSectionErrors = () => {
   try {
     localStorage.removeItem("eventra_section_errors");
-  } catch (_) {}
+  } catch {}
 };

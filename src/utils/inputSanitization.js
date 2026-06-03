@@ -1,4 +1,4 @@
-/* eslint-disable-next-line no-console */
+ 
 /**
  * Input Sanitization Utilities
  *
@@ -83,7 +83,7 @@ export const validateSearchQuery = (query = '') => {
 export const prepareSafeSearchQuery = (rawQuery = '') => {
   const validation = validateSearchQuery(rawQuery);
   if (!validation.isValid) {
-    /* eslint-disable-next-line no-console */
+     
     console.warn(`[Security] Invalid search query: ${validation.error}`);
     return '';
   }

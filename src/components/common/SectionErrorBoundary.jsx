@@ -44,7 +44,7 @@ class SectionErrorBoundary extends React.Component {
         url: window.location.href,
       });
       localStorage.setItem(key, JSON.stringify(existing.slice(0, 15)));
-    } catch (_) {
+    } catch {
       // Never crash inside the error boundary
     }
   }
