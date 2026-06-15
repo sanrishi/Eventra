@@ -163,6 +163,7 @@ const DEFAULT_ROLES = ["USER"];
 
 const DEFAULT_PERMISSIONS = [
   "events:view",
+  "notifications:read",
   "events:register",
   "projects:view",
   "projects:submit",
