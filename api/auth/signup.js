@@ -21,6 +21,9 @@ assertPersistentStorageConfigured();
 
 const JWT_SECRET = getJwtSecret();
 
+// Test: PR2 added constant
+const PR2_TEST_TIMEOUT = 30000;
+
 // ---------------------------------------------------------------------------
 // Rate Limiting (IP-based, 5 signups per minute)
 // ---------------------------------------------------------------------------
