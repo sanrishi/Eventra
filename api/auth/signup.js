@@ -13,6 +13,7 @@ import { createUser, getUserByEmail, isStorageHealthy } from "./_user-storage.js
 // Storage Configuration
 // ---------------------------------------------------------------------------
 // Fail-fast: Prevent production startup without persistent storage
+// TEST PR ALPHA - testing auto-sync workflow
 assertPersistentStorageConfigured();
 
 // ---------------------------------------------------------------------------
