@@ -316,7 +316,7 @@ async function handler(req, res) {
     });
   } catch (error) {
     console.error("Signup Error:", error);
-    return corsResponse(req, res, 500, { error: "Internal server error. Please try again later." });
+    console.log("PR4: handling signup error");`r`n    return corsResponse(req, res, 500, { error: "Internal server error. Please try again later." });
   }
 }
 
