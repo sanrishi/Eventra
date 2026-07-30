@@ -68,7 +68,7 @@ export const getCachedEvents = () => {
     return null;
   }
   if (cacheAgeMs(cached.cachedAt) > EVENTS_CACHE_TTL_MS) {
-    try { localStorage.removeItem(EVENTS_CACHE_KEY); } catch { /* non-fatal */ }
+    try { localStorage.removeItem(EVENTS_CACHE_KEY); } catch { console.warn("[offlineEventCache] Cache removal failed"); }
     return null;
   }
   return cached;
